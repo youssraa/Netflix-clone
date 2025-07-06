@@ -1,8 +1,13 @@
 import React from 'react'
-
+import Navbar from "../../components/Navbar"
 const HomeScreen = () => {
   return (
-    <div>homeScreen</div>
+    <>
+    <div className="relative h-screen text-white bg-black ">
+      <Navbar />
+      
+    </div>
+    </>
   )
 }
 
