@@ -1,8 +1,12 @@
 import React,{useState} from 'react'
 import {Link} from "react-router-dom"
-import {Search} from "lucide-react";
+import {Menu, Search , LogOut} from "lucide-react";
 import {useAuthStore} from "../store/authUser"
+import {useContentStore} from "../store/content";
+
 function Navbar() {
+    const {contentType , setContentType}= useContentStore();
+
     const[isMobileMenuOpen , setIsMobileMenuOpen ] = useState(false);
     const {logout , user}=useAuthStore();
     const toggoleMobileMenu = ()=>{
@@ -16,13 +20,13 @@ function Navbar() {
             </Link>
             {/* Navbr desktop items  */}
             <div className='hidden sm:flex gap-2 items-center' >
-                <Link to="/" className='hover:underline'>
+                <Link to="/" className='hover:underline' onClick={() => setContentType("movie")}>
                  Movies 
                 </Link>
-                <Link to="/" className='hover:underline'>
+                <Link to="/" className='hover:underline'onClick={() => setContentType("tv")}>
                  Tv Shows
                 </Link>
-                <Link to="/" className='hover:underline'>
+                <Link to="/history" className='hover:underline'>
                  Search History
                 </Link>     
             </div>
@@ -31,12 +35,18 @@ function Navbar() {
             <Link to="/search" >
             <Search className='size-6 cursior-pointer'/>
             </Link>
-            <img src={user.img} alt="avatar" className='h-8 rounded cursor-pointer'/>
-            <logOut className='size-6 cursor-pointer ' onClick={logout}/>
+            <img src={user.image} alt="avatar" className='h-8 rounded cursor-pointer'/>
+            <LogOut className='size-6 cursor-pointer ' onClick={logout}/>
+            <div className='sm:hidden '>
+                <Menu className='size-6 cursor-pointer  ' onClick={toggoleMobileMenu
+
+                } />
+
+            </div>
         </div>
         {/* navbar mobile items */}
         {isMobileMenuOpen && 
-        <div className='w-full sm:hidden mt-4 z-50 bg-black border rounded border-grey-800'>
+        <div className='w-full sm:hidden mt-4 z-50 bg-black border rounded border-gray-800 '>
             <Link to="/"  className='block hover:underline p-2'
             onClick={toggoleMobileMenu}>
                 Movies 

@@ -27,7 +27,7 @@ export async function searchPerson(req,res) {
         res.status(200).json({success : true , content :response.results})
         
     } catch (error) {
-        console.log("error in the search person controller" ,error.message)
+      
         res.status(500).json({ success: false, message: "Internal Server Error" });
     }
     
@@ -52,9 +52,9 @@ export async function searchMovie(req,res){
                 }
             }
         })
-        res.status(200).json({success : false , message : response.results})
+        res.status(200).json({success : true , content : response.results})
     } catch (error) {
-        console.log("error in the search movie controller" ,error.message)
+      
         res.status(500).json({ success: false, message: "Internal Server Error" });
     }
 }
@@ -79,9 +79,9 @@ export async function searchTv(req,res){
                 }
             }
         })
-        res.status(200).json({success : true , message : response.results})
+        res.status(200).json({success : true , content : response.results})
     } catch (error) {
-        console.log("error in the search tv controller" ,error.message)
+     
         res.status(500).json({ success: false, message: "Internal Server Error" });
     }
 }
@@ -89,7 +89,7 @@ export async function getSearchHistory(req,res){
     try {
         res.status(200).json({success : true , content : req.user.searchHistory})
     } catch (error) {
-          console.log("error in the get search History controller" ,error.message)
+         
         res.status(500).json({ success: false, message: "Internal Server Error" });
     }
 }
@@ -104,7 +104,7 @@ export async function removeItemFromSearchHistory(req,res){
         }) ;
         res.status(200).json({success : true , message : "Iteam is removed successfully"})
     } catch (error) {
-             console.log("error in the get delete History controller" ,error.message)
+           
         res.status(500).json({ success: false, message: "Internal Server Error" });
     }
 }

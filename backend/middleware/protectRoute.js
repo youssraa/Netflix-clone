@@ -17,13 +17,11 @@ export const protectRoute = async(req,res,next)=>{
 
         }
         req.user = user ;
-        console.log("TOKEN:", req.cookies["jwt-netflix"]);
-        console.log("DECODED:", decoded);
-        console.log("USER:", user);
+       
 
         next();
     } catch (error) {
-        console.log("error protect routet middleware",error.message)
+   
         res.status(500).json({success : false , message : "Internal Server error"})
         
     }

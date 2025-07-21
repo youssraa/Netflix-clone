@@ -4,7 +4,7 @@ import {useAuthStore} from "../store/authUser"
 function SignUpPage() {
   const {searchParams} = new URL(document.location) ;
   const emailValue = searchParams.get('email')
-  console.log(emailValue)
+
   const[email ,setEmail]=useState(emailValue || "");
   const[username ,setUsername]=useState("");
   const[password ,setPassword]=useState("");

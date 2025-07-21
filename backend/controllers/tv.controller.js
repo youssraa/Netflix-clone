@@ -4,8 +4,10 @@ import { fetchFromTmdb } from "../services/tmdb.service.js";
 export async function getTrendingTv(req,res){
     try {
         const data = await fetchFromTmdb('https://api.themoviedb.org/3/trending/tv/day?language=en-US')
-        res.json({success : true , content : data.results})
-    } catch (error) {
+		const randomMovie = data.results[Math.floor(Math.random() * data.results?.length)];
+		res.json({ success: true, content: randomMovie });
+	
+	} catch (error) {
         
    res.status(500).json({success : false , message : "Internal Server error"})
     }

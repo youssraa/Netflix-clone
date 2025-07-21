@@ -39,7 +39,7 @@ export async function signup(req,res){
     await newUser.save()
     res.status(201).send({success: true , user : {...newUser._doc , password : ""}})
    } catch (error) { 
-    console.log("Error in signup controller", error.message);
+    
 	res.status(500).json({ success: false, message: "Internal server error" });
    }
 } 
@@ -61,7 +61,7 @@ try {
     res.status(200).json({sucess : true ,user : {...user._doc ,password :""}})
     
 } catch (error) {
-        console.log("Error in login controller", error.message);
+       
 	res.status(500).json({ success: false, message: "Internal server error" });
 }
 }
@@ -70,7 +70,7 @@ export async function logout(req,res) {
         res.clearCookie("jwt-netflix")
         res.status(200).json({sucess : true , message : "logg out successfully"})
     } catch (error) {
-           console.log("Error in signup controller", error.message);
+          
 	res.status(500).json({ success: false, message: "Internal server error" });
     }
     
@@ -79,9 +79,9 @@ export async function authCheck(req, res) {
 	try {
 	
 		res.status(200).json({ success: true, user: req.user });
-        console.log("AUTH CHECK - req.user:", req.user);
+      
 	} catch (error) {
-		console.log("Error in authCheck controller", error.message);
+	
 		res.status(500).json({ success: false, message: "Internal server error" });
 	}
 }
