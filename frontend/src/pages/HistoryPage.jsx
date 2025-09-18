@@ -1,7 +1,8 @@
 import React,{useState, useEffect} from 'react';
 import Navbar from '../components/Navbar';
 import { SMALL_IMG_BASE_URL } from '../utils/constants/constants';
-import axios from "axios"
+import axios from "axios";
+import { Trash } from 'lucide-react';
 const HistoryPage = () => {
     	const [searchHistory, setSearchHistory] = useState([]);
         function formatDate(dateString) {

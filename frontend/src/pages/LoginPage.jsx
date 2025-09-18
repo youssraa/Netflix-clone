@@ -52,7 +52,7 @@ function LoginPage() {
            </div>
            <button className='w-full py-2 bg-red-600 text-white font-semibold rounded-md 
            hover:bg-red-700 '>
-           Login
+           { isLoggingIn ? "Loading ..." : "Login"}
            </button>
          </form> 
          <div className='text-center text-gray-400'>
