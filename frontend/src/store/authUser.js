@@ -10,7 +10,9 @@ export const useAuthStore = create((set)=>({
     signup : async (credentials)=>{
        set({isSigning : true}) ;
         try {
-            const response = await axios.post("/api/v1/auth/signup",credentials)
+            const response = await axios.post("/api/v1/auth/signup",credentials, 
+               { withCredentials: true }
+            )
             set({user :response.data.user , isSigningUp :false})
             toast.success("Account created successfully") 
         } catch (error) {
@@ -21,7 +23,9 @@ export const useAuthStore = create((set)=>({
     login : async (credentials)=>{
         set({ isLogging : true});
         try {
-            const response = await axios.post("/api/v1/auth/login",credentials);
+            const response = await axios.post("/api/v1/auth/login",credentials,
+                { withCredentials: true }
+            );
             set({user : response.data.user ,isLogging : false})
              toast.success("Logged ") ;
         } catch (error) {
@@ -33,7 +37,7 @@ export const useAuthStore = create((set)=>({
     logout : async ()=>{
         set({isLoggingOut : true})
         try {
-            const response = await axios.post("/api/v1/auth/logout")
+            const response = await axios.post("/api/v1/auth/logout",   { withCredentials: true })
             set({user :null , isLoggingOut : false })
             toast.success('logged out successfuly')
         } catch (error) {
@@ -46,7 +50,7 @@ export const useAuthStore = create((set)=>({
 		set({ isCheckingAuth: true });
            
 		try {
-			const response = await axios.get("/api/v1/auth/authCheck");
+			const response = await axios.get("/api/v1/auth/authCheck",);
 
 			set({ user: response.data.user, isCheckingAuth: false });
          
